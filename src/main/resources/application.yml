@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/attendance
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
