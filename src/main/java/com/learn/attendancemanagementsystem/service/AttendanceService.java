@@ -15,6 +15,8 @@ public class AttendanceService {
     public Attendnce updateAttendance(Long id, Attendnce newData) {
         Attendnce attendnce = attendnceRepository.findById(id).get();
 
-
+        if (attendnce == null) {
+            throw new RuntimeException("Attendance not found");
+        }
     }
 }
