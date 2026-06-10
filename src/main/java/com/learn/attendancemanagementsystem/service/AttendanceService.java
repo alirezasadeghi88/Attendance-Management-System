@@ -18,5 +18,15 @@ public class AttendanceService {
         if (attendnce == null) {
             throw new RuntimeException("Attendance not found");
         }
+
+        if (newData.getInput() != 0) {
+            attendnce.setInput(newData.getInput());
+        }
+
+        if (newData.getOutput() != 0) {
+            attendnce.setOutput(newData.getOutput());
+        }
+
+        return attendnceRepository.save(attendnce);
     }
 }
