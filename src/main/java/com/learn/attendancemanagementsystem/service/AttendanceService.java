@@ -1,5 +1,6 @@
 package com.learn.attendancemanagementsystem.service;
 
+import com.learn.attendancemanagementsystem.model.Attendnce;
 import com.learn.attendancemanagementsystem.repository.AttendnceRepository;
 import org.springframework.stereotype.Service;
 
@@ -9,5 +10,11 @@ public class AttendanceService {
 
     public AttendanceService(AttendnceRepository attendnceRepository) {
         this.attendnceRepository = attendnceRepository;
+    }
+
+    public Attendnce updateAttendance(Long id, Attendnce newData) {
+        Attendnce attendnce = attendnceRepository.findById(id).get();
+
+
     }
 }
