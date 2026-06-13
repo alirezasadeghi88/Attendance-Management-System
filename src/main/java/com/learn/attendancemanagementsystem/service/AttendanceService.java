@@ -4,6 +4,8 @@ import com.learn.attendancemanagementsystem.model.Attendnce;
 import com.learn.attendancemanagementsystem.repository.AttendnceRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AttendanceService {
     private final AttendnceRepository attendnceRepository;
@@ -13,17 +15,17 @@ public class AttendanceService {
     }
 
     public Attendnce updateAttendance(Long id, Attendnce newData) {
-        Attendnce attendnce = attendnceRepository.findById(id).get();
+        Optional<Attendnce> attendnceOpt = attendnceRepository.findById(id);
 
-        if (attendnce == null) {
-            throw new RuntimeException("Attendance not found");
-        }
+        Attendnce attendnce = attendnceOpt.get();
 
-        if (newData.getInput() != 0) {
+
+
+        if (newData.getInput() > 0) {
             attendnce.setInput(newData.getInput());
         }
 
-        if (newData.getOutput() != 0) {
+        if (newData.getOutput() > 0) {
             attendnce.setOutput(newData.getOutput());
         }
 

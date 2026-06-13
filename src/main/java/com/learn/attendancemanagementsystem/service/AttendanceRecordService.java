@@ -4,6 +4,8 @@ import com.learn.attendancemanagementsystem.model.AttendanceRecord;
 import com.learn.attendancemanagementsystem.repository.AttendanceRecordRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AttendanceRecordService {
     private final AttendanceRecordRepository attendanceRecordRepository;
@@ -13,11 +15,10 @@ public class AttendanceRecordService {
     }
 
     public AttendanceRecord update(Long id, AttendanceRecord newData) {
-        AttendanceRecord attendanceRecord = attendanceRecordRepository.findById(id).get();
+       Optional<AttendanceRecord> attendanceRecordOpt = attendanceRecordRepository.findById(id);
+       AttendanceRecord attendanceRecord = attendanceRecordOpt.get();
 
-        if (attendanceRecord == null) {
-            throw new RuntimeException("AttendanceRecord not found");
-        }
+
 
         if (newData.getEntryTime() != null) {
             attendanceRecord.setEntryTime(newData.getEntryTime());
@@ -31,7 +32,7 @@ public class AttendanceRecordService {
             attendanceRecord.setUser(newData.getUser());
         }
 
-        if (newData.getStatus() != null) {
+        if (newData.getStatus() != null && !newData.getStatus().isEmpty()) {
             attendanceRecord.setStatus(newData.getStatus());
         }
 

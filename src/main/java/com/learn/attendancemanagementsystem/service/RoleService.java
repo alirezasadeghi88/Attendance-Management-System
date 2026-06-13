@@ -4,6 +4,8 @@ import com.learn.attendancemanagementsystem.model.Role;
 import com.learn.attendancemanagementsystem.repository.RoleRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class RoleService {
     private final RoleRepository roleRepository;
@@ -13,18 +15,18 @@ public class RoleService {
     }
 
     public Role update(Long id, Role newData) {
-        Role role = roleRepository.findById(id).get();
+        Optional<Role> roleOpt = roleRepository.findById(id);
 
-        if (role == null) {
-            throw new RuntimeException("Role not found");
-        }
+        Role role = roleOpt.get();
 
-        if (newData.getName() != null) {
+
+        if (newData.getName() != null && newData.getName().isEmpty() && newData.getName().equals("")) {
             role.setName(newData.getName());
         }
 
         if (newData.getUsers() != null) {
-            role.setUsers(newData.getUsers());
+            role.getUsers().clear();
+            role.getUsers().addAll(newData.getUsers());
         }
 
         return roleRepository.save(role);
