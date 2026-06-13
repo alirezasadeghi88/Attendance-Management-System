@@ -20,7 +20,7 @@ public class DepartmentService {
 
         Department department = departmentOpt.get();
 
-        if (newData.getName() != null && newData.getName().isEmpty() && newData.getName().equals("")) {
+        if (newData.getName() != null && !newData.getName().isEmpty() && !newData.getName().equals("")) {
             department.setName(newData.getName());
         }
 

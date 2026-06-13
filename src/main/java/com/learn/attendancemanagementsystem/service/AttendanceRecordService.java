@@ -32,7 +32,7 @@ public class AttendanceRecordService {
             attendanceRecord.setUser(newData.getUser());
         }
 
-        if (newData.getStatus() != null && !newData.getStatus().isEmpty()) {
+        if (newData.getStatus() != null && !newData.getStatus().isEmpty() && newData.getStatus().equals("")) {
             attendanceRecord.setStatus(newData.getStatus());
         }
 
