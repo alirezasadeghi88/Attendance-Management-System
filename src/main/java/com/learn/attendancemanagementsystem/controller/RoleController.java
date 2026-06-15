@@ -33,4 +33,10 @@ public class RoleController {
     public void delete(@PathVariable Long id) {
         roleRepository.deleteById(id);
     }
+
+    @PutMapping("/{id}")
+    public Role update(@RequestBody Role role
+        , @PathVariable Long id) {
+        return roleService.update(id, role);
+    }
 }
