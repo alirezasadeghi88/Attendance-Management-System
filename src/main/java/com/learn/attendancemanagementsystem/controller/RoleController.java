@@ -29,5 +29,8 @@ public class RoleController {
         return roleRepository.findAll();
     }
 
-
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        roleRepository.deleteById(id);
+    }
 }
