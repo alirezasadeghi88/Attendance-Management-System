@@ -32,4 +32,10 @@ public class DepartmentController {
     public void delete(@PathVariable Long id) {
         departmentRepository.deleteById(id);
     }
+
+    @PutMapping("/{id}")
+    public Department update(@RequestBody Department department
+        , @PathVariable Long id) {
+        return departmentService.update(id, department);
+    }
 }
