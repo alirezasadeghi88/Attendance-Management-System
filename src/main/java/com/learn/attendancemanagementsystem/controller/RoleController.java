@@ -3,10 +3,9 @@ package com.learn.attendancemanagementsystem.controller;
 import com.learn.attendancemanagementsystem.model.Role;
 import com.learn.attendancemanagementsystem.repository.RoleRepository;
 import com.learn.attendancemanagementsystem.service.RoleService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("Role")
@@ -23,6 +22,11 @@ public class RoleController {
     @PostMapping
     public Role save(@RequestBody Role role) {
         return roleRepository.save(role);
+    }
+
+    @GetMapping
+    public List<Role> roles() {
+        return roleRepository.findAll();
     }
 
 
