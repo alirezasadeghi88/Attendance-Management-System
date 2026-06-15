@@ -1,7 +1,10 @@
 package com.learn.attendancemanagementsystem.controller;
 
+import com.learn.attendancemanagementsystem.model.User;
 import com.learn.attendancemanagementsystem.repository.UserRepository;
 import com.learn.attendancemanagementsystem.service.UserService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,5 +17,10 @@ public class UserController {
     public UserController(UserRepository userRepository, UserService userService) {
         this.userRepository = userRepository;
         this.userService = userService;
+    }
+
+    @PostMapping
+    public User save(@RequestBody User user) {
+        return userRepository.save(user);
     }
 }
