@@ -30,5 +30,7 @@ public class AttendanceService {
         if (record.getCheckOutTime() != null) {
             throw new RuntimeException("Employee already checked out today");
         }
+
+        record.setCheckOutTime(checkInTime);
     }
     }
