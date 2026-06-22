@@ -18,5 +18,9 @@ public class AttendanceService {
     public AttendanceRecord registerCheckIn(Long employeeId, LocalDateTime checkInTime) {
         LocalDate today = checkInTime.toLocalDate();
 
-
+        if (attendanceRepository.existsByEmployeeIdAndAttendanceDate(employeeId,
+                today)) {
+            throw new RuntimeException("Employee already checked in today ");
+        }
+    }
     }
