@@ -32,5 +32,7 @@ public class AttendanceService {
         }
 
         record.setCheckOutTime(checkInTime);
+
+        return attendanceRepository.save(record);
     }
-    }
+}
