@@ -22,5 +22,9 @@ public class AttendanceService {
                 today)) {
             throw new RuntimeException("Employee already checked in today ");
         }
+
+        AttendanceRecord record = attendanceRepository
+                .findByEmployeeIdAndAttendanceDate(employeeId, today)
+                .orElseThrow(() -> new RuntimeException("Employee has not checked in today"));
     }
     }
