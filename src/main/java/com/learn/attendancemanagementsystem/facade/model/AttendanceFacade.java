@@ -38,5 +38,10 @@ public class AttendanceFacade {
         long delayMinutes = delayCalculator.calculateDelayMinutes(
                 now.toLocalTime(), shift.getStartTime()
         );
+
+        logService.addLog("Employee" + employeeId +  " was late by "
+                + delayMinutes + " minutes");
+
+
     }
 }
