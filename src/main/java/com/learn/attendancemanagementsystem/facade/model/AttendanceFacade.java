@@ -45,5 +45,12 @@ public class AttendanceFacade {
         notificationService.send(employeeId,"Check-in registered successfully");
 
         return new AttendanceResponse("Check-in registered successfully", delayMinutes);
+
+
+    }
+
+    @Transactional
+    public AttendanceResponse checkOut(Long employeeId) {
+        employeeService.getActive(employeeId);
     }
 }
