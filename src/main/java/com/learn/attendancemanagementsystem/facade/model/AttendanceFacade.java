@@ -54,5 +54,7 @@ public class AttendanceFacade {
         employeeService.getActive(employeeId);
 
         LocalDateTime now = LocalDateTime.now();
+
+        attendanceService.registerCheckIn(employeeId, now);
     }
 }
