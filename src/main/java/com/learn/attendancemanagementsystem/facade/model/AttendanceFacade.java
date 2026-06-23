@@ -52,5 +52,7 @@ public class AttendanceFacade {
     @Transactional
     public AttendanceResponse checkOut(Long employeeId) {
         employeeService.getActive(employeeId);
+
+        LocalDateTime now = LocalDateTime.now();
     }
 }
