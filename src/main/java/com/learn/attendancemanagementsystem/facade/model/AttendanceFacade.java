@@ -1,6 +1,8 @@
 package com.learn.attendancemanagementsystem.facade.model;
 
+import com.learn.attendancemanagementsystem.facade.response.AttendanceResponse;
 import com.learn.attendancemanagementsystem.facade.service.*;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,5 +21,10 @@ public class AttendanceFacade {
         this.delayCalculator = delayCalculator;
         this.notificationService = notificationService;
         this.logService = logService;
+    }
+
+    @Transactional
+    public AttendanceResponse checkIn(Long employeeId) {
+        employeeService.getActive(employeeId);
     }
 }
