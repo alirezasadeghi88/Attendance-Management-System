@@ -35,6 +35,8 @@ public class AttendanceFacade {
 
         attendanceService.registerCheckIn(employeeId, now);
 
-
+        long delayMinutes = delayCalculator.calculateDelayMinutes(
+                now.toLocalTime(), shift.getStartTime()
+        );
     }
 }
