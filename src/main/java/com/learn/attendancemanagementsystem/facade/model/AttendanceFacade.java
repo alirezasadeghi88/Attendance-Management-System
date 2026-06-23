@@ -58,5 +58,7 @@ public class AttendanceFacade {
         attendanceService.registerCheckIn(employeeId, now);
 
         logService.addLog("Employee " + employeeId + " checked out at " + now);
+
+        notificationService.send(employeeId, "Check-out registered successfully");
     }
 }
