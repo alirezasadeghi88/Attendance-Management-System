@@ -43,5 +43,7 @@ public class AttendanceFacade {
                 + delayMinutes + " minutes");
 
         notificationService.send(employeeId,"Check-in registered successfully");
+
+        return new AttendanceResponse("Check-in registered successfully", delayMinutes);
     }
 }
