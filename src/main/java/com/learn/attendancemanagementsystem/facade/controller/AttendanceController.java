@@ -21,4 +21,9 @@ public class AttendanceController {
     public AttendanceResponse checkIn(@PathVariable Long employeeId) {
         return attendanceFacade.checkIn(employeeId);
     }
+
+    @PostMapping("/check-out/{employeeId}")
+    public AttendanceResponse checkOut(@PathVariable Long employeeId) {
+        return attendanceFacade.checkOut(employeeId);
+    }
 }
