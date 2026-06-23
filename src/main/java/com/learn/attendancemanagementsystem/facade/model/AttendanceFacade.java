@@ -5,6 +5,8 @@ import com.learn.attendancemanagementsystem.facade.service.*;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class AttendanceFacade {
     private final EmployeeService employeeService;
@@ -26,5 +28,10 @@ public class AttendanceFacade {
     @Transactional
     public AttendanceResponse checkIn(Long employeeId) {
         employeeService.getActive(employeeId);
+
+        Shift shift = shiftService.getTodayShift(employeeId);
+
+        LocalDateTime now = LocalDateTime.now();
+
     }
 }
