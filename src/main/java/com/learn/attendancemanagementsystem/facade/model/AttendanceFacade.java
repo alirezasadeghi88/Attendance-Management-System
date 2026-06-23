@@ -42,6 +42,6 @@ public class AttendanceFacade {
         logService.addLog("Employee" + employeeId +  " was late by "
                 + delayMinutes + " minutes");
 
-
+        notificationService.send(employeeId,"Check-in registered successfully");
     }
 }
