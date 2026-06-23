@@ -56,5 +56,7 @@ public class AttendanceFacade {
         LocalDateTime now = LocalDateTime.now();
 
         attendanceService.registerCheckIn(employeeId, now);
+
+        logService.addLog("Employee " + employeeId + " checked out at " + now);
     }
 }
